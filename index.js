@@ -49,7 +49,8 @@ app.post("/persoane", async (req, res) => {
 	try {
 		const { nume, prenume } = req.body;
 		const result = await db.collection("persoane").insertOne({ nume, prenume });
-		res.json({ message: "Persoană adăugată cu succes", data: result.ops[0] });
+		const persoanaNoua = { _id: result.insertedId, nume, prenume }; // Creează un obiect persoană cu ID-ul inserat
+		res.json({ message: "Persoană adăugată cu succes", data: persoanaNoua });
 	} catch (error) {
 		res.status(500).json({ error: "Eroare la adăugarea persoanei" });
 	}
