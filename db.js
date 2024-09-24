@@ -1,9 +1,9 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
-const uri =
+const url =
 	"";
 
-const client = new MongoClient(uri, {
+const client = new MongoClient(url, {
 	serverApi: {
 		version: ServerApiVersion.v1,
 		strict: true,
